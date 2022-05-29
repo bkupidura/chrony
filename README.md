@@ -5,10 +5,16 @@ chrony is a versatile implementation of the Network Time Protocol (NTP). It can 
 ## Usage
 ### Docker
 ```
-  docker run --name chrony --rm --cap-add SYS_TIME -d -p 123:123/udp -e CHRONY_POOL="0.pl.pool.ntp.org" -e CHRONY_SYNC_RTC="true" bkupidura/chront:latest
+docker run --name chrony --rm --cap-add SYS_TIME -d -p 123:123/udp -e CHRONY_POOL="0.pl.pool.ntp.org" -e CHRONY_SYNC_RTC="true" bkupidura/chrony:latest
 ```
 ### K8s
 ```
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: home-infra
+
 ---
 apiVersion: v1
 kind: Service
@@ -19,7 +25,6 @@ metadata:
     app.kubernetes.io/name: chrony
 spec:
   type: LoadBalancer
-  loadBalancerIP: "192.168.0.100"
   publishNotReadyAddresses: false
   ports:
     - name: chrony

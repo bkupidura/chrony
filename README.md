@@ -1,3 +1,4 @@
+[![Docker Image CI](https://github.com/bkupidura/chrony/actions/workflows/docker-image.yml/badge.svg)](https://github.com/bkupidura/chrony/actions/workflows/docker-image.yml)
 # docker container with chrony
 chrony is a versatile implementation of the Network Time Protocol (NTP). It can synchronise the system clock with NTP servers, reference clocks (e.g. GPS receiver), and manual input using wristwatch and keyboard. It can also operate as an NTPv4 (RFC 5905) server and peer to provide a time service to other computers in the network.
 

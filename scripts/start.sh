@@ -15,6 +15,7 @@ pool ${CHRONY_POOL} iburst
 makestep 0.1 3
 local stratum 10
 driftfile /var/lib/chrony/chrony.drift
+pidfile /var/run/chrony/chronyd.pid
 EOF
     if [ "${CHRONY_SYNC_RTC}" == "true" ]; then echo "rtcsync" >> ${CONFIG_FILE}; fi
     if [ "${CHRONY_CMD_ALLOW}" != "" ] ; then
@@ -27,8 +28,6 @@ fi
 
 echo "chrony config file:"
 cat ${CONFIG_FILE}
-
-chown chrony:chrony /var/lib/chrony/chrony.drift
 
 echo "starting chrony"
 /usr/sbin/chronyd ${CHRONYD_ARGS} -f ${CONFIG_FILE}
